@@ -120,3 +120,10 @@ RUN set -xe \
 FROM base_stage
 
 COPY --from=stage /usr/local /usr/local
+
+RUN set -xe \
+        && apk --update --no-cache upgrade \
+        && apk add --no-cache \
+        git \
+        && rm -rf /root/.cache \
+        && rm -rf /var/cache/apk/*
